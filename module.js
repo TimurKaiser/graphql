@@ -1,5 +1,6 @@
 let user = null;
 let pass = null;
+let authToken = null;
 
 export function setUsernameMod(username) {
     user = username;
@@ -18,4 +19,13 @@ export function setPasswordMod(password) {
 
 export function getPasswordMod() {
     return pass;
+}
+
+export function setToken(token) {
+    authToken = token;
+}
+
+
+export function getToken() {
+    return authToken;
 }

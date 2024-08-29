@@ -1,9 +1,11 @@
 import { setToken } from "../module.js";
 
-const url = "https://zone01normandie.org/api/auth/signin";
-const username = "";
-const password = "";
 
+const url = "https://zone01normandie.org/api/auth/signin";
+
+
+window.addEventListener('formReady', function(event) {
+const { username, password } = event.detail;
 const credentials = btoa(`${username}:${password}`)
 
 const tokenQuery = ``;
@@ -30,3 +32,6 @@ fetch(url, {
 .catch(error => {
   console.error('Erreur dans sign:', error);
 });
+ 
+});
+
