@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grahphql</title>
+    <title>GraphQL</title>
 </head>
 <body>
-    <h1>test</h1>
+    <h1>Test</h1>
     
+    <form id="loginForm">
+        <ul>
+            <li>
+                <label for="username">user:</label>
+                <input type="text" id="username" name="username" required>
+            </li>
+            <li>
+                <label for="password">passw:</label>
+                <input type="password" id="password" name="password" required>
+            </li>
+            <li>
+                <button type="submit">send</button>
+            </li>
+        </ul>
+    </form>
 
-    <script type="module" src="main.js"></script>
-    <script type="module" src="./token/sign.js"></script>
+    <script src="form.js"></script>
+
+    <!-- <script type="module" src="main.js"></script>
+    <script type="module" src="./token/sign.js"></script> -->
 </body>
 </html>
