@@ -1,3 +1,5 @@
+import { setPasswordMod, setUsernameMod } from "./module.js";
+
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     // empeche rechargement de la page + me donne le controle
     event.preventDefault();
@@ -6,10 +8,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-
-    console.log("username is", username);
-    console.log("password is", password);
-
+    setUsernameMod(username);
+    setPasswordMod(password);
 
 })
 
