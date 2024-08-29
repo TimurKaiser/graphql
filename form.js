@@ -11,5 +11,13 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     setUsernameMod(username);
     setPasswordMod(password);
 
+    const formEvent = new CustomEvent ('formReady', {
+        detail: {
+            username,
+            password
+        }
+    });
+    window.dispatchEvent(formEvent);
+
 })
 
