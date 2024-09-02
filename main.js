@@ -1,16 +1,27 @@
 import { getToken } from "./module.js"
 
 
+
+const queryData = `{
+  user {
+    firstName
+    lastName
+    id
+  }
+  transaction {
+    type
+    amount
+    attrs
+    createdAt
+    path  
+  }
+}
+`
+
+
 window.addEventListener('tokenReady', (event) => {
   const token = getToken();
   const url = "https://zone01normandie.org/api/graphql-engine/v1/graphql"
-
-  const queryData = `{
-    user {
-      id
-    }
-  }
-  `
   
   fetch(url, {
       method:"POST",
@@ -97,4 +108,76 @@ window.addEventListener('tokenReady', (event) => {
 //    }
 //  }
 //}
-//}`
+//}`  
+
+
+
+
+
+
+
+// do
+//{
+//  user {
+//    login
+//    auditRatio
+//    createdAt
+//    firstName
+//    lastName
+//    totalUp
+//    totalDown
+//  }
+//}
+
+
+
+
+
+
+// bon 
+//{
+//  user {
+//    firstName
+//    lastName
+//    id
+//  }
+//  transaction {
+//    type
+//    amount
+//    attrs
+//    createdAt
+//    path
+//    
+//    
+//  }
+//}
+
+
+
+
+
+
+//{
+//  user {
+//    firstName
+//    lastName
+//    id
+//  }
+//  transaction {
+//    type
+//    amount
+//    attrs
+//    createdAt
+//    path
+//    
+//    
+//  }
+//  event_user {
+//    level
+//    userLogin
+//    
+//    event {
+//      path
+//    }
+//  }
+//}
