@@ -11,9 +11,6 @@ const queryData = `{
   transaction {
     type
     amount
-    attrs
-    createdAt
-    path  
   }
 }
 `
@@ -34,15 +31,13 @@ window.addEventListener('tokenReady', (event) => {
   })
   
   .then(response => response.json())
-  .then(dataBase => {
+  .then(myData => {
+    sessionStorage.setItem('myData', JSON.stringify(myData));
+    console.log("Data is stored");
 
-    const transactions = dataBase.data.transaction;
-    const skillTransaction = transactions.filter(transaction => 
-      typeof transaction.type === 'string' && transaction.type.startsWith('skill_')
-    );
-
-      console.log(JSON.stringify(skillTransaction))
+    window.dispatchEvent( new CustomEvent('dataReady', {detail: myData}));
   })
+
   
   .catch(error => {
       console.log(error)
