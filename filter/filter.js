@@ -1,3 +1,5 @@
+
+
 window.addEventListener('dataReady', (event) => {
     const getData = sessionStorage.getItem('myData');
     
@@ -15,11 +17,18 @@ window.addEventListener('dataReady', (event) => {
         const groupedSkills = skillTransaction.reduce((acc, skill) => {
             if (!acc[skill.type] || skill.amount > acc[skill.type].amount) {
                 acc[skill.type] = skill;
+                skill.amount = skill.amount / 100;
             }
             return acc;
         }, {});
 
         console.log(groupedSkills);
+
+        const event = new CustomEvent('skillReady', {detail: groupedSkills});
+        window.dispatchEvent(event);
+
+
+
         
     } else {
         console.log("No data in filter");
