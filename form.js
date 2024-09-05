@@ -20,4 +20,3 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     window.dispatchEvent(formEvent);
 
 })
-

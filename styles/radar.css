@@ -1,0 +1,13 @@
+.grid-line {
+    stroke: #ccc;
+    stroke-width: 1;
+}
+.data-line {
+    stroke: #ff6600;
+    stroke-width: 2;
+    fill: rgba(255, 102, 0, 0.2);
+}
+.data-point {
+    fill: #ff6600;
+    stroke: none;
+}
