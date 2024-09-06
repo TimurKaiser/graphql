@@ -2,7 +2,6 @@
 
 window.addEventListener('dataReady', (event) => {
     const getData = sessionStorage.getItem('myData');
-    
     if (getData) {
         // Convertir la chaîne en JSON pour plus de manipulation
         const myData = JSON.parse(getData);
@@ -22,9 +21,23 @@ window.addEventListener('dataReady', (event) => {
             return acc;
         }, {});
 
-        console.log(groupedSkills);
+        let technoKeys = ['skill_go', 'skill_js', 'skill_html', 'skill_css', 'skill_unix', 'skill_docker'];
+        let techno = {};
+        let skills = {};
 
-        const event = new CustomEvent('skillReady', {detail: groupedSkills});
+
+            Object.keys(groupedSkills).forEach((key) => {
+                if (technoKeys.includes(key)) {
+                    techno[key] = groupedSkills[key];
+                } else {
+                    skills[key] = groupedSkills[key];
+                }
+            });
+
+            console.log(skills);
+            console.log(techno);
+
+        const event = new CustomEvent('skillReady', {detail: skills});
         window.dispatchEvent(event);
 
 
