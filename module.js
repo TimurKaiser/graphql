@@ -4,7 +4,7 @@ let authToken = null;
 
 export function setUsernameMod(username) {
     user = username;
-    console.log("Username is okay", user)
+    console.log("Username is okay")
 }
 
 export function getUsernameMod() {
@@ -14,7 +14,7 @@ export function getUsernameMod() {
 
 export function setPasswordMod(password) {
     pass = password;
-    console.log("Password is ok",pass)
+    console.log("Password is ok")
 }
 
 export function getPasswordMod() {

@@ -1,5 +1,4 @@
 
-
 window.addEventListener('dataReady', (event) => {
     const getData = sessionStorage.getItem('myData');
     if (getData) {
@@ -33,17 +32,16 @@ window.addEventListener('dataReady', (event) => {
                     skills[key] = groupedSkills[key];
                 }
             });
-
+            
             console.log(skills);
             console.log(techno);
 
-        const event = new CustomEvent('skillReady', {detail: skills});
-        window.dispatchEvent(event);
+
+            const event = new CustomEvent('skillReady', {detail: skills});
+            window.dispatchEvent(event);
 
 
-
-        
-    } else {
+        } else {
         console.log("No data in filter");
     }
 });

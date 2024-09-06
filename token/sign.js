@@ -1,7 +1,6 @@
 import { setToken } from "../module.js";
 import { drawRadar } from "../svg/radar.js";
 
-
 const url = "https://zone01normandie.org/api/auth/signin";
 
 
@@ -26,8 +25,14 @@ fetch(url, {
   console.log(JSON.stringify(token));
   setToken(token);
 
-  document.body.innerHTML = main;
-  drawRadar();
+
+window.addEventListener('skillReady', function(event) {
+    document.body.innerHTML = main;
+    setTimeout(() => {
+        drawRadar();
+    }, 0);
+});
+
 
   const event = new CustomEvent('tokenReady', {detail: token});
   window.dispatchEvent(event);
