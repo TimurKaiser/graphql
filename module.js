@@ -14,7 +14,7 @@ export function getUsernameMod() {
 
 export function setPasswordMod(password) {
     pass = password;
-    console.log("Password is ok")
+    console.log("Password is okay")
 }
 
 export function getPasswordMod() {

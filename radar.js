@@ -1,16 +1,12 @@
-
-
-
-
-export function drawRadar() {
+export function drawRadar(skills) {
     const svgNS = "http://www.w3.org/2000/svg";
     const centerX = 200;
     const centerY = 200;
     const radius = 100;
     const dataPoint = 7;
     const angleStep = 360 / dataPoint;
-    const data = [0.5, 0.3, 0.4, 0.1, 0.5, 0.4, 0.3];
-  
+
+    const data = Object.values(skills).map(skill => skill.amount);  
   
     
     function polarToCartesian(angle, radius) {
