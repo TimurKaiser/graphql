@@ -5,7 +5,6 @@ export function drawRadar(skills) {
     const radius = 100;
     const dataPoint = 7;
     const angleStep = 360 / dataPoint;
-
     const data = Object.values(skills).map(skill => skill.amount);  
   
     

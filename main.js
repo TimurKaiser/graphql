@@ -1,4 +1,5 @@
 import { setToken, getToken, setUsernameMod, setPasswordMod } from "./module.js";
+import { drawPolar } from "./polar.js";
 import { drawRadar } from "./radar.js";
 
 const authUrl = "https://zone01normandie.org/api/auth/signin";
@@ -98,6 +99,7 @@ function handleDataReady() {
 
         document.body.innerHTML = mainTemplate;
         drawRadar(skills);
+        drawPolar(techno);
 
         window.dispatchEvent(new CustomEvent('skillReady', { detail: skills }));
     } else {
@@ -105,7 +107,8 @@ function handleDataReady() {
     }
 }
 
-const mainTemplate = `<svg id="radarChart" width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+const mainTemplate = `
+<svg id="radarChart" width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
 
 <defs>
     <radialGradient id="gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
@@ -138,6 +141,31 @@ const mainTemplate = `<svg id="radarChart" width="400" height="400" viewBox="0 0
 <circle cx="200" cy="200" r="20" fill="url(#gradient)" fill-opacity="0.9"/>
 <circle cx="200" cy="200" r="10" fill="url(#gradient)" fill-opacity="1"/>
 </svg>
+
+
+<svg id="polarAreaChart" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Dégradé de couleur pour les cercles -->
+    <defs>
+        <radialGradient id="gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgba(255, 102, 0, 0.5); stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(255, 102, 0, 0); stop-opacity:1" />
+        </radialGradient>
+    </defs>
+
+    <circle cx="250" cy="250" r="200" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="180" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="160" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="140" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="120" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="100" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="80" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="60" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="40" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="20" stroke="#ccc" stroke-width="1" fill="none"/>
+    <circle cx="250" cy="250" r="10" stroke="#ccc" stroke-width="1" fill="none"/>
+    
+</svg>
+
 `;
 
 initialize();
