@@ -12,3 +12,17 @@
     fill: #ff6600;
     stroke: none;
 }
+
+#chartContainer {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#radarContainer, #polarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

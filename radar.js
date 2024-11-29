@@ -1,8 +1,8 @@
 export function drawRadar(skills) {
     const svgNS = "http://www.w3.org/2000/svg";
-    const centerX = 200;
-    const centerY = 200;
-    const radius = 100;
+    const centerX = 250;
+    const centerY = 250;
+    const radius = 200;
     const dataPoint = 7;
     const angleStep = 360 / dataPoint;
     const data = Object.values(skills).map(skill => skill.amount);  

@@ -97,7 +97,13 @@ function handleDataReady() {
         console.log(skills);
         console.log(techno);
 
-        document.body.innerHTML = mainTemplate;
+        document.getElementById('chartContainer').innerHTML = mainTemplate;
+
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.remove();
+        }
+
         drawRadar(skills);
         drawPolar(techno);
 
@@ -108,7 +114,10 @@ function handleDataReady() {
 }
 
 const mainTemplate = `
-<svg id="radarChart" width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+
+<div id="radarContainer">
+
+<svg id="radarChart" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
 
 <defs>
     <radialGradient id="gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
@@ -118,31 +127,37 @@ const mainTemplate = `
 </defs>
 
 <!-- Circles and grid lines -->
-<circle cx="200" cy="200" r="100" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="90" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="80" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="70" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="60" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="50" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="40" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="30" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="20" stroke="#ccc" stroke-width="1" fill="none"/>
-<circle cx="200" cy="200" r="10" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="200" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="180" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="160" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="140" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="120" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="100" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="80" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="60" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="40" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="20" stroke="#ccc" stroke-width="1" fill="none"/>
+<circle cx="250" cy="250" r="10" stroke="#ccc" stroke-width="1" fill="none"/>
+
 
 <!-- Gradient circles -->
-<circle cx="200" cy="200" r="100" fill="url(#gradient)" fill-opacity="0.1"/>
-<circle cx="200" cy="200" r="90" fill="url(#gradient)" fill-opacity="0.2"/>
-<circle cx="200" cy="200" r="80" fill="url(#gradient)" fill-opacity="0.3"/>
-<circle cx="200" cy="200" r="70" fill="url(#gradient)" fill-opacity="0.4"/>
-<circle cx="200" cy="200" r="60" fill="url(#gradient)" fill-opacity="0.5"/>
-<circle cx="200" cy="200" r="50" fill="url(#gradient)" fill-opacity="0.6"/>
-<circle cx="200" cy="200" r="40" fill="url(#gradient)" fill-opacity="0.7"/>
-<circle cx="200" cy="200" r="30" fill="url(#gradient)" fill-opacity="0.8"/>
-<circle cx="200" cy="200" r="20" fill="url(#gradient)" fill-opacity="0.9"/>
-<circle cx="200" cy="200" r="10" fill="url(#gradient)" fill-opacity="1"/>
+<circle cx="250" cy="250" r="100" fill="url(#gradient)" fill-opacity="0.1"/>
+<circle cx="250" cy="250" r="90" fill="url(#gradient)" fill-opacity="0.2"/>
+<circle cx="250" cy="250" r="80" fill="url(#gradient)" fill-opacity="0.3"/>
+<circle cx="250" cy="250" r="70" fill="url(#gradient)" fill-opacity="0.4"/>
+<circle cx="250" cy="250" r="60" fill="url(#gradient)" fill-opacity="0.5"/>
+<circle cx="250" cy="250" r="50" fill="url(#gradient)" fill-opacity="0.6"/>
+<circle cx="250" cy="250" r="40" fill="url(#gradient)" fill-opacity="0.7"/>
+<circle cx="250" cy="250" r="30" fill="url(#gradient)" fill-opacity="0.8"/>
+<circle cx="250" cy="250" r="20" fill="url(#gradient)" fill-opacity="0.9"/>
+<circle cx="250" cy="250" r="10" fill="url(#gradient)" fill-opacity="1"/>
 </svg>
 
+</div>
 
+
+
+<div id="polarContainer">
 <svg id="polarAreaChart" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
     <!-- Dégradé de couleur pour les cercles -->
     <defs>
@@ -166,6 +181,7 @@ const mainTemplate = `
     
 </svg>
 
+</div>
 `;
 
 initialize();
