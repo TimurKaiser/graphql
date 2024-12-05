@@ -5,6 +5,7 @@ export function drawRadar(skills) {
     const radius = 200;
     const dataPoint = 7;
     const angleStep = 360 / dataPoint;
+    const labels = Object.keys(skills);
     const data = Object.values(skills).map(skill => skill.amount);  
   
     
@@ -33,7 +34,7 @@ export function drawRadar(skills) {
             line.setAttribute("stroke-width", "1");
             document.getElementById("radarChart").appendChild(line);
         }
-  
+
         data.forEach((value, i) => {
             const angle = angleStep * i;
             const { x, y } = polarToCartesian(angle, value * radius);
@@ -46,6 +47,20 @@ export function drawRadar(skills) {
             point.setAttribute("class", "data-point");
             document.getElementById("radarChart").appendChild(point);
         });
+
+        labels.forEach((label, i) => {
+            const angle = angleStep * i;
+            const { x, y } = polarToCartesian(angle, radius + 30);
+            const text = document.createElementNS(svgNS, "text");
+            text.setAttribute("x", x);
+            text.setAttribute("y", y);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("dominant-baseline", "middle");
+            text.setAttribute("font-size", "12");
+            text.textContent = label.replace(/^skill_/, '');
+            document.getElementById("radarChart").appendChild(text);
+        });
+        
   
         const dataLine = document.createElementNS(svgNS, "polygon");
         dataLine.setAttribute("points", points.join(" "));
