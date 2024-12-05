@@ -17,6 +17,7 @@ export function drawPolar(technos) {
 
     let startAngle = 0;
     const segmentAngle = 360 / data.length;
+    const labels = Object.keys(technos);
 
     data.forEach((value, index) => {
         if (value <= 0) return;
@@ -42,5 +43,26 @@ export function drawPolar(technos) {
         svg.appendChild(path);
 
         startAngle = endAngle;
+    });
+
+    startAngle = 0;
+    data.forEach((value, index) => {
+        if (value <= 0) return;
+
+        const midAngle = startAngle - segmentAngle / 2;
+        const radius = maxRadius + 30;
+        const x = centerX + radius * Math.cos(toRadians(midAngle));
+        const y = centerY + radius * Math.sin(toRadians(midAngle));
+
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", x);
+        text.setAttribute("y", y);
+        text.setAttribute("text-anchor", "middle");
+        text.setAttribute("dominant-baseline", "middle");
+        text.setAttribute("font-size", "12");
+        text.textContent = labels[index].replace(/^skill_/, '');
+        svg.appendChild(text);
+
+        startAngle += segmentAngle;
     });
 }
