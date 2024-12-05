@@ -10,12 +10,15 @@ const queryData = `{
         firstName
         lastName
         id
+        login
+        auditRatio
     }
     transaction {
         type
         amount
     }
 }`;
+
 
 function initialize() {
     document.getElementById('loginForm').addEventListener('submit', handleFormSubmit);
@@ -71,6 +74,17 @@ function handleDataReady() {
     const getData = sessionStorage.getItem('myData');
     if (getData) {
         const myData = JSON.parse(getData);
+        const userData = myData.data.user[0];
+
+
+        const userInfoDiv = document.createElement('div');
+        userInfoDiv.innerHTML = `
+            <p><strong>Login:</strong> ${userData.login}</p>
+            <p><strong>Audit Ratio:</strong> ${userData.auditRatio}</p>
+        `;
+        document.getElementById('userInfoContainer').appendChild(userInfoDiv);
+
+
         const transactions = myData.data.transaction;
         const skillTransaction = transactions.filter(transaction => transaction.type.includes('skill_'));
 
